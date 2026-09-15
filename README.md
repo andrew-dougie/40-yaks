@@ -1,24 +1,24 @@
-# Yak's Bad Fur Day
+# 40 Yaks
 
 A chunky, capitals-only display font made from the polygon lettering used in **Lil Miner's Ruin**. It has broad strokes, uneven edges, splayed letterforms, and open counters. Available as installable TTF and WOFF2.
 
-![Yak's Bad Fur Day specimen using an excerpt from Blood Meridian](docs/specimen.svg)
+![40 Yaks specimen using an excerpt from Blood Meridian](docs/specimen.svg)
 
 ## Download
 
-- **[YaksBadFurDay-Regular.ttf](fonts/ttf/YaksBadFurDay-Regular.ttf)** — desktop and native app font.
-- **[YaksBadFurDay-Regular.woff2](fonts/woff2/YaksBadFurDay-Regular.woff2)** — compressed webfont.
-- **[Latest release](https://github.com/andrew-dougie/yaks-bad-fur-day/releases/latest)** — font files, source, license, and examples.
+- **[FortyYaks-Regular.ttf](fonts/ttf/FortyYaks-Regular.ttf)** — desktop and native app font.
+- **[FortyYaks-Regular.woff2](fonts/woff2/FortyYaks-Regular.woff2)** — compressed webfont.
+- **[Latest release](https://github.com/andrew-dougie/40-yaks/releases/latest)** — font files, source, license, and examples.
 
-On macOS, open the TTF in Font Book and select **Install**. On Windows, right-click it and select **Install**. The family appears as **Yak's Bad Fur Day**.
+On macOS, open the TTF in Font Book and select **Install**. On Windows, right-click it and select **Install**. The family appears as **40 Yaks**.
 
 ## Font details
 
 | Detail | Included |
 | --- | --- |
-| Family | Yak's Bad Fur Day |
-| PostScript name | `YaksBadFurDay-Regular` |
-| Version | 1.000 |
+| Family | 40 Yaks |
+| PostScript name | `FortyYaks-Regular` |
+| Version | 1.001 |
 | Weight | 900 |
 | Glyphs | 76, including the missing-character glyph |
 | Mapped code points | 110 |
@@ -30,19 +30,25 @@ Lowercase input displays as uppercase shapes; there are no distinct lowercase dr
 
 The files contain monochrome vector outlines. The game's gold bevels, enamel colors, candle, jumbled placement, and animation are renderer effects, not part of the installable font. The editable [browser specimen](examples/index.html) includes both plain type and an optional layered CSS treatment.
 
+## Color and layered lettering
+
+The font supplies shapes; your app supplies the fill and outline. The game builds a coral gradient face, a gold bevel, darker extruded sides, and cream highlights from those shapes.
+
+See **[Face color, edging, and depth](docs/styling.md)** for the game's palette, adjustable CSS variables, a reusable [title stylesheet](examples/yak-title.css), and a UIKit fill-and-stroke example. Colors and 3D effects are not embedded in the font file.
+
 ## Install with a coding assistant
 
 Copy this prompt into your coding assistant:
 
 ```text
-Install Yak's Bad Fur Day in this project using its existing framework and typography conventions.
+Install 40 Yaks in this project using its existing framework and typography conventions.
 
-Download and bundle the appropriate font from release v1.000:
-- Native/desktop TTF: https://github.com/andrew-dougie/yaks-bad-fur-day/releases/download/v1.000/YaksBadFurDay-Regular.ttf
-- Web WOFF2: https://github.com/andrew-dougie/yaks-bad-fur-day/releases/download/v1.000/YaksBadFurDay-Regular.woff2
-- License: https://raw.githubusercontent.com/andrew-dougie/yaks-bad-fur-day/v1.000/OFL.txt
+Download and bundle the appropriate font from release v1.001:
+- Native/desktop TTF: https://github.com/andrew-dougie/40-yaks/releases/download/v1.001/FortyYaks-Regular.ttf
+- Web WOFF2: https://github.com/andrew-dougie/40-yaks/releases/download/v1.001/FortyYaks-Regular.woff2
+- License: https://raw.githubusercontent.com/andrew-dougie/40-yaks/v1.001/OFL.txt
 
-Register the family as "Yak's Bad Fur Day", normal style, weight 900. Use WOFF2 for web projects and TTF for native apps. For iOS, add YaksBadFurDay-Regular.ttf to UIAppFonts and use PostScript name YaksBadFurDay-Regular. Include OFL.txt with the font assets.
+Register the family as "40 Yaks", normal style, weight 900. Use WOFF2 for web projects and TTF for native apps. For iOS, add FortyYaks-Regular.ttf to UIAppFonts and use PostScript name FortyYaks-Regular. Include OFL.txt with the font assets.
 
 Use this capitals-only display font for short headings rather than body copy. Lowercase characters already map to uppercase outlines; keep the original source text for accessibility. Add fallback fonts for unsupported characters. Do not assume the font contains the game's color or 3D effects.
 
@@ -53,15 +59,15 @@ Add a reusable font definition and a preview. Verify that the bundled font loads
 
 ```css
 @font-face {
-  font-family: "Yak's Bad Fur Day";
-  src: url("YaksBadFurDay-Regular.woff2") format("woff2");
+  font-family: "40 Yaks";
+  src: url("FortyYaks-Regular.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 .title {
-  font-family: "Yak's Bad Fur Day", sans-serif;
+  font-family: "40 Yaks", sans-serif;
   font-weight: 900;
   font-size: 3rem;
   line-height: 1.3;
@@ -75,7 +81,7 @@ Open `examples/index.html` after cloning, or run `python3 -m http.server` from t
 Add the TTF to your target's resources and list its filename under `UIAppFonts` in Info.plist:
 
 ```swift
-label.font = UIFont(name: "YaksBadFurDay-Regular", size: 32)
+label.font = UIFont(name: "FortyYaks-Regular", size: 32)
 label.text = "His feet are light and nimble."
 ```
 

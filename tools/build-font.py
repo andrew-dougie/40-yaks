@@ -1,11 +1,11 @@
-"""Build Yak's Bad Fur Day from the game's authored polygon silhouettes."""
+"""Build 40 Yaks from the game's authored polygon silhouettes."""
 from pathlib import Path
 import json, math
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 ROOT=Path(__file__).resolve().parents[1]
-FAMILY="Yak's Bad Fur Day"; NAME='YaksBadFurDay-Regular'
+FAMILY="40 Yaks"; NAME='FortyYaks-Regular'
 shapes=json.loads((ROOT/'sources/game-glyphs.json').read_text())
 original=set(shapes)
 def polygon(w,p,holes=None,extra=None):return dict(w=w,p=p,holes=holes or [],extra=extra or [])
@@ -71,7 +71,7 @@ for c,target in alias.items():cmap[ord(c)]=cmap[ord(target)]
 order=['.notdef']+[n for n in glyphs if n!='.notdef']
 fb=FontBuilder(1000,isTTF=True);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap);fb.setupGlyf(glyphs);fb.setupHorizontalMetrics(metrics)
 fb.setupHorizontalHeader(ascent=1000,descent=-240,lineGap=0)
-fb.setupNameTable({'familyName':FAMILY,'styleName':'Regular','uniqueFontIdentifier':NAME+'-1.000','fullName':FAMILY+' Regular','psName':NAME,'version':'Version 1.000','copyright':'Copyright 2026 Andrew White.','description':'Chunky polygon display lettering from Lil Miner’s Ruin. Capitals-only; lowercase input maps to uppercase outlines.','licenseDescription':'SIL Open Font License, Version 1.1.','licenseInfoURL':'https://openfontlicense.org/'})
+fb.setupNameTable({'familyName':FAMILY,'styleName':'Regular','uniqueFontIdentifier':NAME+'-1.001','fullName':FAMILY+' Regular','psName':NAME,'version':'Version 1.001','copyright':'Copyright 2026 Andrew White.','description':'Chunky polygon display lettering from Lil Miner’s Ruin. Capitals-only; lowercase input maps to uppercase outlines.','licenseDescription':'SIL Open Font License, Version 1.1.','licenseInfoURL':'https://openfontlicense.org/'})
 fb.setupOS2(sTypoAscender=1000,sTypoDescender=-240,sTypoLineGap=0,usWinAscent=1000,usWinDescent=240,usWeightClass=900,sCapHeight=770,sxHeight=770,fsType=0,fsSelection=0x40)
 fb.setupPost();fb.setupMaxp();font=fb.font
 pairs={'AV':-45,'AW':-30,'AY':-40,'AT':-20,'FA':-25,'LT':-35,'LV':-35,'LY':-40,'PA':-25,'TA':-35,'TO':-15,'TV':-15,'VA':-45,'VO':-20,'WA':-30,'YA':-40,'YO':-25}
@@ -81,6 +81,6 @@ addOpenTypeFeaturesFromString(font,fea)
 font['head'].created=font['head'].modified=3872448000;font.recalcTimestamp=False
 for folder in ['ttf','woff2']:(ROOT/'fonts'/folder).mkdir(parents=True,exist_ok=True)
 font.save(ROOT/'fonts/ttf'/f'{NAME}.ttf');font.flavor='woff2';font.save(ROOT/'fonts/woff2'/f'{NAME}.woff2')
-(ROOT/'fonts/characters.json').write_text(json.dumps({'family':FAMILY,'version':'1.000','mappedCodePoints':len(cmap),'outlines':len(glyphs),'characters':''.join(chr(i) for i in sorted(cmap)),'lowercase':'Mapped to uppercase outlines','kerningPairs':pairs},indent=2)+'\n')
+(ROOT/'fonts/characters.json').write_text(json.dumps({'family':FAMILY,'version':'1.001','mappedCodePoints':len(cmap),'outlines':len(glyphs),'characters':''.join(chr(i) for i in sorted(cmap)),'lowercase':'Mapped to uppercase outlines','kerningPairs':pairs},indent=2)+'\n')
 (ROOT/'sources/punctuation.json').write_text(json.dumps({c:g for c,g in shapes.items() if c not in original and c!='.notdef'},indent=2)+'\n')
 print(f'Built {FAMILY}: {len(glyphs)} glyphs, {len(cmap)} code points, {len(pairs)} kern pairs.')

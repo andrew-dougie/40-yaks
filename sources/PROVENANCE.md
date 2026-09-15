@@ -4,7 +4,7 @@
 
 The font builder retains their contours, including counters and detached shapes, while normalizing left side bearings and scaling coordinates into font units. Added punctuation is defined in `tools/build-font.py`; `punctuation.json` is its generated geometry reference. No outlines are extracted from another font or a reference sprite sheet.
 
-The source game's comment describes the chunky title silhouettes as inspired by the 40 Winks title. The font family name, Yak's Bad Fur Day, was selected by Andrew White. This is not a font extracted from Conker's Bad Fur Day.
+The source game's comment describes the chunky title silhouettes as inspired by the 40 Winks title. The font family name, 40 Yaks, was selected by Andrew White. This is not a font extracted from Conker's Bad Fur Day.
 
 The original renderer adds extrusion, bevels, enamel gradients, lighting, candle geometry, per-letter rotations and animation. Those effects are not glyph contours and are not stored in the monochrome font files. The styled browser example approximates a layered title treatment with CSS; the game renderer remains unchanged.
 

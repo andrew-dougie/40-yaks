@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 from fontTools.ttLib import TTFont
 from fontTools.pens.recordingPen import RecordingPen
-ROOT=Path(__file__).resolve().parents[1];name='YaksBadFurDay-Regular'
+ROOT=Path(__file__).resolve().parents[1];name='FortyYaks-Regular'
 a=TTFont(ROOT/'fonts/ttf'/f'{name}.ttf');b=TTFont(ROOT/'fonts/woff2'/f'{name}.woff2')
 cmap=a.getBestCmap();assert cmap==b.getBestCmap();assert a['hmtx'].metrics==b['hmtx'].metrics
 assert all(i in cmap for i in range(32,127))
@@ -20,8 +20,8 @@ for char,shape in json.loads((ROOT/'sources/game-glyphs.json').read_text()).item
  expected=sorted((round((x-xmin)*700+70),round(y*700)) for points in contours for x,y in points)
  actual=sorted(tuple(pt) for pt in a['glyf'][cmap[ord(char)]].coordinates)
  assert actual==expected, f'Original contour changed: {char}'
-assert a['name'].getDebugName(1)=="Yak's Bad Fur Day"
-assert a['name'].getDebugName(6)=='YaksBadFurDay-Regular'
+assert a['name'].getDebugName(1)=="40 Yaks"
+assert a['name'].getDebugName(6)=='FortyYaks-Regular'
 assert a['OS/2'].fsType==0
 assert len(a['GPOS'].table.LookupList.Lookup)==1
 print(f'PASS: {len(cmap)} mappings, {len(a.getGlyphOrder())} glyphs, ASCII coverage, lowercase aliases, bounds, names, kerning, 43 original contours, and TTF/WOFF2 parity.')

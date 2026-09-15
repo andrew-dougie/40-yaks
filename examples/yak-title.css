@@ -1,0 +1,28 @@
+/* Apply to an element using 40 Yaks. These layers are not in the font. */
+.yak-title {
+  --yak-face-top: #ff5d3d;
+  --yak-face-bottom: #a51d13;
+  --yak-rim: #ffd51a;
+  --yak-side: #71401b;
+  --yak-stroke: 2px;
+  --yak-depth: 5px;
+  font-family: "40 Yaks", Yak, sans-serif;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--yak-face-top);
+  -webkit-text-stroke: var(--yak-stroke) var(--yak-rim);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 var(--yak-depth) 0 var(--yak-side));
+}
+/* The fallback above remains readable when gradient text is unsupported. */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .yak-title {
+    background: linear-gradient(to bottom, var(--yak-face-top), var(--yak-face-bottom));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .yak-title { background: none; color: CanvasText; -webkit-text-stroke: 0; filter: none; }
+}
