@@ -1,5 +1,7 @@
 # 40 Yaks
 
+![40 Yaks with coral faces, gold bevels, and darker extruded sides](docs/game-treatment.png?v=1.002)
+
 A chunky, capitals-only display font with polygon outlines. It has broad strokes, uneven edges, splayed letterforms, and open counters. Available as installable TTF and WOFF2.
 
 ![40 Yaks specimen using an excerpt from Blood Meridian](docs/specimen.svg?v=1.002)
@@ -37,8 +39,6 @@ The font supplies shapes; your app supplies the fill and outline. A layered rend
 See **[Face color, edging, and depth](docs/styling.md)** for a coral-and-gold palette, adjustable CSS variables, a reusable [title stylesheet](examples/yak-title.css), and a UIKit fill-and-stroke example. Colors and 3D effects are not embedded in the font file.
 
 ### Layered rendering examples
-
-![Coral faces, gold bevels, and darker extruded sides](docs/game-treatment.png?v=1.002)
 
 ![Blue faces with gold bevels](docs/game-new-high-score.png?v=1.002)
 
