@@ -46,6 +46,8 @@ These examples use extruded glyph meshes, bevels, and lighting. They are rendere
 
 ## Install with a coding assistant
 
+### Plain font
+
 Copy this prompt into your coding assistant:
 
 ```text
@@ -61,6 +63,24 @@ Register the family as "40 Yaks", normal style, weight 900. Use WOFF2 for web pr
 Use this capitals-only display font for short headings rather than body copy. Lowercase characters already map to uppercase outlines; keep the original source text for accessibility. Add fallback fonts for unsupported characters. Apply any color or 3D effects separately in the rendering application.
 
 Add a reusable font definition and a preview. Verify that the bundled font loads and renders letters, numbers, punctuation, and lowercase input correctly. Explain the changed files and how to apply the font.
+```
+
+### Layered and colored lettering
+
+This separate prompt installs the font and implements the colored face, gold rim, and depth shown above:
+
+```text
+Install 40 Yaks and implement its layered, colored lettering in this project using the existing framework and UI conventions.
+
+Use release v1.002 from https://github.com/andrew-dougie/40-yaks. Bundle fonts/ttf/FortyYaks-Regular.ttf for native apps or fonts/woff2/FortyYaks-Regular.woff2 for the web, and include OFL.txt. Register family "40 Yaks", normal style, weight 900; the native PostScript name is FortyYaks-Regular. Use the corrected capital I from this release.
+
+Read the complete rendering recipe and replication prompt at https://github.com/andrew-dougie/40-yaks/blob/v1.002/docs/styling.md. Match the coral-and-gold reference at https://github.com/andrew-dougie/40-yaks/blob/v1.002/docs/game-treatment.png. The font contains monochrome outlines; implement the colors and depth as rendering layers.
+
+For a 3D renderer, use the supplied glyph contours with their counters intact. Follow the guide's mesh depths, bevel dimensions, material settings, lighting, and fixed per-letter offsets. Use a coral face gradient from #A51D13 at the bottom to #FF5D3D at the top, a lit gold bevel, darker brown extruded sides, and warm highlights. Keep the face gradient relative to each glyph's height. Expose face colors, rim color, bevel width, depth, and rendering resolution as reusable settings.
+
+For standard web text, bundle examples/yak-title.css and apply its yak-title class. Expose --yak-face-top, --yak-face-bottom, --yak-rim, --yak-stroke, --yak-side, and --yak-depth. This CSS treatment approximates the appearance; it does not provide physical bevels or changing 3D highlights. For native 2D text, follow the guide's glyph-mask gradient and separate outline approach.
+
+Keep the original text accessible, honor reduced-motion and forced-colors settings where applicable, and preserve a readable fallback. Show plain and layered samples at the project's actual display sizes. Check I against 1, punctuation, open counters, and unclipped edges. Include a screenshot and explain how to reuse the component and adjust its colors and depth.
 ```
 
 ## Web usage
