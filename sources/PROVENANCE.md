@@ -2,7 +2,7 @@
 
 `game-glyphs.json` contains the 43 authored polygon glyphs from `Games/LilMinersRuin/src/title-logo.js` in Andrew White's Lil Miner's Ruin repository, commit `e1c40050a825ecc752eeb8ad468e01bb387aa376` (September 15, 2026).
 
-The font builder retains their contours, including counters and detached shapes, while normalizing left side bearings and scaling coordinates into font units. Added punctuation is defined in `tools/build-font.py`; `punctuation.json` is its generated geometry reference. No outlines are extracted from another font or a reference sprite sheet.
+Version 1.002 corrects capital I with a complete top crossbar and a clearer central stem; the same contour is used by the game. The font builder retains the other contours, including counters and detached shapes, while normalizing left side bearings and scaling coordinates into font units. Added punctuation is defined in `tools/build-font.py`; `punctuation.json` is its generated geometry reference. No outlines are extracted from another font or a reference sprite sheet.
 
 The source game's comment describes the chunky title silhouettes as inspired by the 40 Winks title. The font family name, 40 Yaks, was selected by Andrew White. This is not a font extracted from Conker's Bad Fur Day.
 

@@ -1,6 +1,6 @@
 # 40 Yaks
 
-A chunky, capitals-only display font made from the polygon lettering used in **Lil Miner's Ruin**. It has broad strokes, uneven edges, splayed letterforms, and open counters. Available as installable TTF and WOFF2.
+A chunky, capitals-only display font with polygon outlines. It has broad strokes, uneven edges, splayed letterforms, and open counters. Available as installable TTF and WOFF2.
 
 ![40 Yaks specimen using an excerpt from Blood Meridian](docs/specimen.svg)
 
@@ -18,7 +18,7 @@ On macOS, open the TTF in Font Book and select **Install**. On Windows, right-cl
 | --- | --- |
 | Family | 40 Yaks |
 | PostScript name | `FortyYaks-Regular` |
-| Version | 1.001 |
+| Version | 1.002 |
 | Weight | 900 |
 | Glyphs | 76, including the missing-character glyph |
 | Mapped code points | 110 |
@@ -28,13 +28,21 @@ On macOS, open the TTF in Font Book and select **Install**. On Windows, right-cl
 
 Lowercase input displays as uppercase shapes; there are no distinct lowercase drawings. The underlying text keeps its original spelling for copying, searching, and accessibility. Accented letters and unsupported scripts need a fallback font. See the [complete character map](fonts/characters.json).
 
-The files contain monochrome vector outlines. The game's gold bevels, enamel colors, candle, jumbled placement, and animation are renderer effects, not part of the installable font. The editable [browser specimen](examples/index.html) includes both plain type and an optional layered CSS treatment.
+The files contain monochrome vector outlines. Colored fills, outlines, bevels, shadows, and animation are applied by the rendering application. The editable [browser specimen](examples/index.html) includes both plain type and an optional layered CSS treatment.
 
 ## Color and layered lettering
 
-The font supplies shapes; your app supplies the fill and outline. The game builds a coral gradient face, a gold bevel, darker extruded sides, and cream highlights from those shapes.
+The font supplies shapes; your app supplies the fill and outline. A layered rendering can combine a coral gradient face, a gold bevel, darker extruded sides, and cream highlights.
 
-See **[Face color, edging, and depth](docs/styling.md)** for the game's palette, adjustable CSS variables, a reusable [title stylesheet](examples/yak-title.css), and a UIKit fill-and-stroke example. Colors and 3D effects are not embedded in the font file.
+See **[Face color, edging, and depth](docs/styling.md)** for a coral-and-gold palette, adjustable CSS variables, a reusable [title stylesheet](examples/yak-title.css), and a UIKit fill-and-stroke example. Colors and 3D effects are not embedded in the font file.
+
+### Layered rendering examples
+
+![Coral faces, gold bevels, and darker extruded sides](docs/game-treatment.png)
+
+![Blue faces with gold bevels](docs/game-new-high-score.png)
+
+These examples use extruded glyph meshes, bevels, and lighting. They are rendered images, not color information embedded in the font. See the **[copy/paste replication prompt](docs/styling.md#replicate-the-layered-treatment-with-a-coding-assistant)** for reproducing the treatment in your application.
 
 ## Install with a coding assistant
 
@@ -43,14 +51,14 @@ Copy this prompt into your coding assistant:
 ```text
 Install 40 Yaks in this project using its existing framework and typography conventions.
 
-Download and bundle the appropriate font from release v1.001:
-- Native/desktop TTF: https://github.com/andrew-dougie/40-yaks/releases/download/v1.001/FortyYaks-Regular.ttf
-- Web WOFF2: https://github.com/andrew-dougie/40-yaks/releases/download/v1.001/FortyYaks-Regular.woff2
-- License: https://raw.githubusercontent.com/andrew-dougie/40-yaks/v1.001/OFL.txt
+Download and bundle the appropriate font from release v1.002:
+- Native/desktop TTF: https://github.com/andrew-dougie/40-yaks/releases/download/v1.002/FortyYaks-Regular.ttf
+- Web WOFF2: https://github.com/andrew-dougie/40-yaks/releases/download/v1.002/FortyYaks-Regular.woff2
+- License: https://raw.githubusercontent.com/andrew-dougie/40-yaks/v1.002/OFL.txt
 
 Register the family as "40 Yaks", normal style, weight 900. Use WOFF2 for web projects and TTF for native apps. For iOS, add FortyYaks-Regular.ttf to UIAppFonts and use PostScript name FortyYaks-Regular. Include OFL.txt with the font assets.
 
-Use this capitals-only display font for short headings rather than body copy. Lowercase characters already map to uppercase outlines; keep the original source text for accessibility. Add fallback fonts for unsupported characters. Do not assume the font contains the game's color or 3D effects.
+Use this capitals-only display font for short headings rather than body copy. Lowercase characters already map to uppercase outlines; keep the original source text for accessibility. Add fallback fonts for unsupported characters. Apply any color or 3D effects separately in the rendering application.
 
 Add a reusable font definition and a preview. Verify that the bundled font loads and renders letters, numbers, punctuation, and lowercase input correctly. Explain the changed files and how to apply the font.
 ```
@@ -98,7 +106,7 @@ python tools/verify-font.py
 
 The builder reads `sources/game-glyphs.json`, adds punctuation, constructs TrueType outlines, assigns character mappings and metrics, and exports both formats. Fixed timestamps and pinned dependencies make builds reproducible. The README specimen contains paths from the actual packaged font, so GitHub does not need to load a webfont.
 
-See [source provenance](sources/PROVENANCE.md) for the game revision and the distinction between the glyphs and the renderer effects. This font is not extracted from Conker's Bad Fur Day.
+The [source geometry notes](sources/PROVENANCE.md) describe the contours and version history.
 
 ## License
 

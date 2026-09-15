@@ -24,4 +24,4 @@ assert a['name'].getDebugName(1)=="40 Yaks"
 assert a['name'].getDebugName(6)=='FortyYaks-Regular'
 assert a['OS/2'].fsType==0
 assert len(a['GPOS'].table.LookupList.Lookup)==1
-print(f'PASS: {len(cmap)} mappings, {len(a.getGlyphOrder())} glyphs, ASCII coverage, lowercase aliases, bounds, names, kerning, 43 original contours, and TTF/WOFF2 parity.')
+print(f'PASS: {len(cmap)} mappings, {len(a.getGlyphOrder())} glyphs, ASCII coverage, lowercase aliases, bounds, names, kerning, 43 packaged contours, and TTF/WOFF2 parity.')
