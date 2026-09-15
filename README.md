@@ -2,7 +2,7 @@
 
 A chunky, capitals-only display font with polygon outlines. It has broad strokes, uneven edges, splayed letterforms, and open counters. Available as installable TTF and WOFF2.
 
-![40 Yaks specimen using an excerpt from Blood Meridian](docs/specimen.svg)
+![40 Yaks specimen using an excerpt from Blood Meridian](docs/specimen.svg?v=1.002)
 
 ## Download
 
@@ -38,9 +38,9 @@ See **[Face color, edging, and depth](docs/styling.md)** for a coral-and-gold pa
 
 ### Layered rendering examples
 
-![Coral faces, gold bevels, and darker extruded sides](docs/game-treatment.png)
+![Coral faces, gold bevels, and darker extruded sides](docs/game-treatment.png?v=1.002)
 
-![Blue faces with gold bevels](docs/game-new-high-score.png)
+![Blue faces with gold bevels](docs/game-new-high-score.png?v=1.002)
 
 These examples use extruded glyph meshes, bevels, and lighting. They are rendered images, not color information embedded in the font. See the **[copy/paste replication prompt](docs/styling.md#replicate-the-layered-treatment-with-a-coding-assistant)** for reproducing the treatment in your application.
 
