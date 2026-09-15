@@ -1,0 +1,27 @@
+{
+  "family": "Yak's Bad Fur Day",
+  "version": "1.000",
+  "mappedCodePoints": 110,
+  "outlines": 76,
+  "characters": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u00a0\u00b7\u00d7\u00f7\u2010\u2011\u2013\u2014\u2018\u2019\u201c\u201d\u2022\u2026\u2212",
+  "lowercase": "Mapped to uppercase outlines",
+  "kerningPairs": {
+    "AV": -45,
+    "AW": -30,
+    "AY": -40,
+    "AT": -20,
+    "FA": -25,
+    "LT": -35,
+    "LV": -35,
+    "LY": -40,
+    "PA": -25,
+    "TA": -35,
+    "TO": -15,
+    "TV": -15,
+    "VA": -45,
+    "VO": -20,
+    "WA": -30,
+    "YA": -40,
+    "YO": -25
+  }
+}
