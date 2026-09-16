@@ -9,3 +9,5 @@ The source game's comment describes the chunky title silhouettes as inspired by 
 The original renderer adds extrusion, bevels, enamel gradients, lighting, candle geometry, per-letter rotations and animation. Those effects are not glyph contours and are not stored in the monochrome font files. The styled browser example approximates a layered title treatment with CSS; the game renderer remains unchanged.
 
 Font software and these source contours are distributed under the included SIL Open Font License 1.1.
+
+The [exact 3D cookbook](../docs/3d-cookbook.md) and [portable rendering implementation](../examples/three/SOURCE.md) additionally preserve the enamel meshes, title fixture, and motion from pinned September 16 source revisions. These are separate from the font binaries and from the approximate CSS treatment.

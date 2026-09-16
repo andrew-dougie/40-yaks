@@ -2,3 +2,5 @@
 __pycache__/
 .DS_Store
 build/
+node_modules/
+examples/three/build.js

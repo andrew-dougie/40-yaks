@@ -38,6 +38,8 @@ The font supplies shapes; your app supplies the fill and outline. A layered rend
 
 See **[Face color, edging, and depth](docs/styling.md)** for a coral-and-gold palette, adjustable CSS variables, a reusable [title stylesheet](examples/yak-title.css), and a UIKit fill-and-stroke example. Colors and 3D effects are not embedded in the font file.
 
+See the **[exact 3D cookbook](docs/3d-cookbook.md)** for executable extrusion code, counter lining, separate title/heading materials, lighting, placement, animation, and pixel rendering settings. It includes a **[copy/paste exact 3D installation prompt](docs/3d-cookbook.md#8-copypaste-exact-3d-installation-prompt)** and a runnable reference.
+
 ### Layered rendering examples
 
 ![Blue faces with gold bevels](docs/game-new-high-score.png?v=1.002)
@@ -72,11 +74,11 @@ This separate prompt installs the font and implements the colored face, gold rim
 ```text
 Install 40 Yaks and implement its layered, colored lettering in this project using the existing framework and UI conventions.
 
-Use release v1.002 from https://github.com/andrew-dougie/40-yaks. Bundle fonts/ttf/FortyYaks-Regular.ttf for native apps or fonts/woff2/FortyYaks-Regular.woff2 for the web, and include OFL.txt. Register family "40 Yaks", normal style, weight 900; the native PostScript name is FortyYaks-Regular. Use the corrected capital I from this release.
+Use font release v1.002 from https://github.com/andrew-dougie/40-yaks and the current rendering cookbook (pin its commit separately). Bundle fonts/ttf/FortyYaks-Regular.ttf for native apps or fonts/woff2/FortyYaks-Regular.woff2 for the web, and include OFL.txt. Register family "40 Yaks", normal style, weight 900; the native PostScript name is FortyYaks-Regular. Use the corrected capital I from this release.
 
-Read the complete rendering recipe and replication prompt at https://github.com/andrew-dougie/40-yaks/blob/v1.002/docs/styling.md. Match the coral-and-gold reference at https://github.com/andrew-dougie/40-yaks/blob/v1.002/docs/game-treatment.png. The font contains monochrome outlines; implement the colors and depth as rendering layers.
+Read the complete rendering recipe and replication prompt at https://github.com/andrew-dougie/40-yaks/blob/main/docs/styling.md. Match the coral-and-gold reference at https://github.com/andrew-dougie/40-yaks/blob/v1.002/docs/game-treatment.png. The font contains monochrome outlines; implement the colors and depth as rendering layers.
 
-For a 3D renderer, use the supplied glyph contours with their counters intact. Follow the guide's mesh depths, bevel dimensions, material settings, lighting, and fixed per-letter offsets. Use a coral face gradient from #A51D13 at the bottom to #FF5D3D at the top, a lit gold bevel, darker brown extruded sides, and warm highlights. Keep the face gradient relative to each glyph's height. Expose face colors, rim color, bevel width, depth, and rendering resolution as reusable settings.
+For a 3D renderer, use the supplied glyph contours with their counters intact. Read docs/3d-cookbook.md and use examples/three/lettering.js for exact mesh depths, bevels, gold counter lining, material presets, lighting and fixed letter offsets; pin the repository commit you use. Use a coral face gradient from #A51D13 at the bottom to #FF5D3D at the top, a lit gold bevel, darker brown extruded sides, and warm highlights. Use the fixed authored Y range specified in the cookbook, not each glyph's bounding box. Expose face colors, rim color, bevel width, depth, and rendering resolution as reusable settings.
 
 For standard web text, bundle examples/yak-title.css and apply its yak-title class. Expose --yak-face-top, --yak-face-bottom, --yak-rim, --yak-stroke, --yak-side, and --yak-depth. This CSS treatment approximates the appearance; it does not provide physical bevels or changing 3D highlights. For native 2D text, follow the guide's glyph-mask gradient and separate outline approach.
 
