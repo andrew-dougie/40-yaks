@@ -1,0 +1,11 @@
+{
+  "name": "40-yaks-rendering-recipes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:example": "esbuild examples/three/main.js --bundle --outfile=examples/three/build.js",
+    "verify:3d": "node tools/verify-3d.mjs"
+  },
+  "dependencies": { "three": "0.180.0" },
+  "devDependencies": { "esbuild": "0.25.9" }
+}

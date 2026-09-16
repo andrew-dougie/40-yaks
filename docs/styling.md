@@ -4,6 +4,8 @@ The TTF and WOFF2 contain the **silhouette** of each letter, including its holes
 
 ## A 3D rendering recipe
 
+For exact dimensions, both material presets, source code, lighting, animation, and pixel presentation, use the **[3D cookbook](3d-cookbook.md)**. The overview below shows the bright title palette; generic headings use a separate gold preset.
+
 Construct several solid meshes from each glyph contour:
 
 | Layer | Role | Example palette / settings |
@@ -11,10 +13,10 @@ Construct several solid meshes from each glyph contour:
 | Front face | The colored interior of the letter | Bottom `#A51D13` → top `#FF5D3D` |
 | Bevel and rim | Broad gold edge surrounding the face and its counters | Gold base `#FFD51A`, emissive `#FFB900`, pale specular highlights |
 | Extruded body | Darker thickness visible along the sides | Brown `#71401B` with warm ambient/emissive shading |
-| Glints | Small highlight geometry | Cream `#FFF4C2` |
+| Candle core | Small unlit flame highlight in the title fixture | Cream `#FFF4C2` |
 | Placement | The jumbled title arrangement | Individual letter rotations, offsets, and animation |
 
-The face gradient follows glyph height and uses a nonlinear blend (`height^0.65`) in the renderer's linear color space. Bevel width, camera angle, lights, and emissive materials affect the visible result. A CSS stroke is a flat border; it does not reproduce the real bevel's angled faces and changing highlights.
+The face gradient follows a fixed authored Y range (normally 0–1) and uses a nonlinear blend (`height^0.65`) in the renderer's linear color space. Bevel width, camera angle, lights, and emissive materials affect the visible result. A CSS stroke is a flat border; it does not reproduce the real bevel's angled faces and changing highlights.
 
 The standalone font preserves the same contours, but has no meshes, palette, lighting, candle, or animation baked into it. This lets the same typeface work in plain text, native applications, print, and custom renderers.
 
@@ -74,25 +76,8 @@ For a gradient interior, draw a gradient through a glyph-path mask and stroke th
 
 ## Replicate the layered treatment with a coding assistant
 
-Copy this prompt:
+For physical extrusion and exact source parity, use the **[copy/paste 3D installation prompt](3d-cookbook.md#8-copypaste-exact-3d-installation-prompt)** and the bundled [Three.js implementation](../examples/three/lettering.js). The cookbook distinguishes title and heading palettes, preserves authored contour coordinates, and specifies the separate gold counter lining.
 
-```text
-Install 40 Yaks from https://github.com/andrew-dougie/40-yaks and recreate the layered lettering shown in docs/game-treatment.png. Use the existing renderer and UI conventions in this project.
-
-Use the original vector glyph paths, including counters. The repository provides normalized contours in sources/game-glyphs.json and generated punctuation in sources/punctuation.json, as well as TTF and WOFF2. Do not redraw the typeface or substitute a different font.
-
-For a full 3D treatment, normalize capital height to approximately 1 unit and build three meshes per glyph:
-1. Dark body: extrusion depth 0.25, bevel size 0.11, bevel thickness 0.045, one bevel segment. Translate depth by -0.25. Brown base #71401B, emissive #301505 at 0.35, flat shading.
-2. Gold rim: extrusion depth 0.028, bevel size 0.09, bevel thickness 0.036, one bevel segment. Translate depth by +0.012. Gold base #FFC51C, emissive #D48200 at 0.55, specular #FFEF88, shininess 65. Preserve the letter holes and use gold lining inside them.
-3. Front face: extrusion depth 0.01, bevel size 0.003, bevel thickness 0.005. Translate depth by +0.083. Use an unlit vertex-color fill that blends from #A51D13 at the bottom to #FF5D3D at the top. Interpolate in linear color space using clamped normalized glyph height raised to 0.65, then output sRGB.
-
-Keep the lettering readable with mild, fixed per-letter variation: rotation Z = sin(index * 2.1) * 0.065 radians, vertical offset = sin(index * 1.8) * 0.025, depth offset = sin(index * 2) * 0.012. Do not randomize these every frame. Preserve proportional advances with roughly 0.20 units of tracking in the normalized contour scale.
-
-For the specimen lighting, use a warm hemisphere light (#FFF4D3 sky / #301528 ground, intensity 2), a directional light (#FFEDC4, intensity 2.2) at (-3, 5, 8), and an orthographic camera. View the text with a slight tilt. Keep the counters open when tuning bevel widths. Render at a modest resolution without antialiasing for pixel edges, and scale using nearest-neighbor sampling if magnifying it.
-
-If the project only supports standard HTML/CSS text, use examples/yak-title.css and document that it approximates the gradient, border, and depth but does not provide a physical bevel or lighting. Its custom properties control the two face colors, rim color/thickness, and side color/depth.
-
-Keep the original text available to accessibility APIs. Honor reduced-motion preferences. Show plain and styled samples, check punctuation and the capital I against numeral 1, and verify no clipped bevels or closed counters. Include a screenshot and explain how to adjust the colors, edge width, depth, and rendering resolution.
-```
+For 2D web or native rendering, use the **[layered and colored installation prompt in the README](../README.md#layered-and-colored-lettering)**. Those approaches approximate the appearance without reproducing physical bevels.
 
 The two reference images were rendered by the original lettering implementation: `game-treatment.png` uses the corrected 40 Yaks contours and coral face palette; `game-new-high-score.png` is its blue-face heading asset. The technical source revision is recorded in the source geometry notes.
